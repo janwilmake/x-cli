@@ -26,7 +26,7 @@ After that, my brain started running wild. Just like I have all these ideas for 
 
 # Update 2025-03-27
 
-Brian tipped me about someone building an API going from commits to tweets through an LLM. I talked with him, but wasn't convinced. My brain started racing again. Just a CLI and spend $0.05 per post. What about that? And what if it were connected to your repo you are working on, via the cwd? Wow. This idea just became good. Looking at this now, even think it's much more relevant than when I looked last time. Also I have a better idea on how to do it now. I need to reduce 2 interfaces to 1, enabling posting while disabling feed and notifications! I just need the following to make a POC.
+Brian tipped me about someone building an API going from commits to tweets through an LLM. I talked with him, but wasn't convinced. My brain started racing again. Just a CLI and spend $0.05 per post. What about that? _Main insight: I don't need to gatewall X if I don't have a reason to leave my editor to get stuff done on X!_ And what if it were connected to your repo you are working on, via the cwd? Wow. This idea just became good. Looking at this now, even think it's much more relevant than when I looked last time. Also I have a better idea on how to do it now. I need to reduce 2 interfaces to 1, enabling posting while disabling feed and notifications! I just need the following to make a POC.
 
 It's feasible since im probably already using OAuth 1.0 User Context - https://docs.x.com/resources/fundamentals/authentication/overview
 
