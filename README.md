@@ -40,16 +40,16 @@ Ratelimit info:
 
 The post tweet API itself with OAuth is also great for later for other things! So let's get started, hopefully tomorrow (it's 1:13 AM now, going to bed, feeling accomplished about this great idea).... 😴
 
-## POC
+## POC (2025-03-28)
 
 ❗️ The potential impact is huge: saving hours (!!) of distractions every day, staying in flow in the editor. 🤯
 
 API
 
 - ✅ X oauth on xymake.com that uses DO (done)
-- Expose endpoint to tweet. Either new tweet or comment on given id. will queue using the DO alarms to prevent hitting ratelimits. use https://docs.x.com/x-api/posts/creation-of-a-post.
-- New page for dashboard with API key for CLI.
-- Generate and show API key
+- 🤯 After some testing and digging, it seems that the user-based ratelimit is only available to enterprise through the 1.1 api: https://devcommunity.x.com/t/v1-1-api-no-longer-working/199890/3
+- ✅ Expose endpoint to tweet. Either new tweet or comment on given id. will queue using the DO alarms to prevent hitting ratelimits. use https://docs.x.com/x-api/posts/creation-of-a-post.
+- ✅ Finalised the initial API structure - reply, quote, or new!
 
 CLI
 
@@ -59,6 +59,16 @@ CLI
 - CLI `xy ...` to send a tweet. uses current git of current folder to know if its a thread or not. will start new thread if the latest one is over a day ago (but will quote old one). will always attach tweets to repos by adding the repo url in the second tweet.
 
 ## BACKLOG
+
+Easy onboarding
+
+- New page for dashboard with API key for CLI.
+- Generate and show API key and scopes are shown as well
+- New landingpage https://cli.xymake.com that explains the X CLI
+
+Validation
+
+- Already validated from myself. let's start by trying it myself and see if it sticks.
 
 More CLI
 
@@ -71,6 +81,7 @@ More CLI
 - `xy find` to find relevant tweets from the cli and show them as numbered threads, allowing easy responding (uses `forgithub.threads`)
 - Features to improve tweets further somehow, e.g. based on relevant files, auto-tagging people, etc.
 - `xy prompt` to allow AI to write/suggest the tweet (in different ways, e.g. based on changes - cc https://tweetgit.com https://x.com/dzhohola)
+- someone like https://x.com/yagiznizipli posts all PRs on X and that also kinda works but X wants X. branch detection is definitely required to determine the thread!
 
 Monetisation
 
