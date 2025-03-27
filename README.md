@@ -49,7 +49,9 @@ API
 - ✅ X oauth on xymake.com that uses DO (done)
 - 🤯 After some testing and digging, it seems that the user-based ratelimit is only available to enterprise through the 1.1 api: https://devcommunity.x.com/t/v1-1-api-no-longer-working/199890/3
 - ✅ Expose endpoint to tweet. Either new tweet or comment on given id. will queue using the DO alarms to prevent hitting ratelimits. use https://docs.x.com/x-api/posts/creation-of-a-post.
-- ✅ Finalised the initial API structure - reply, quote, or new!
+- ✅ Finalised the initial API structure - reply, quote, or new! It works!
+
+[![](chatgpt-tweet.jpeg)](https://x.com/janwilmake/status/1905239936082518410)
 
 CLI
 
