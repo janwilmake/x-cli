@@ -4,35 +4,20 @@
 
 XYMake CLI is the developer's companion for sharing your work on X directly from your terminal. No more context switching, no more distractions—just seamless integration between your code and your audience.
 
-### 🔄 Post as you code
-
-With a simple command `xy`, create threads about your repository as you build it. XYMake intelligently tracks your projects, creating organized threads tied to your repositories.
-
-```bash
-$ xy Just implemented a new feature that solves...
-```
-
-### 🧵 Smart threading
-
-XYMake automatically maintains context between your posts, creating coherent threads based on your repository. It knows when to continue an existing thread or start a new one.
-
-### 🔨 Built for developers
-
-- Stays within your workflow - never leave your editor
-- Repository-aware threading
-- Automatic repo linking in threads
-- Maintains your coding flow state
+- XYMake uses `git remote get-url origin` to check which repo you are talking about to create coherent threads based on your repository.
 
 ### ⚡ The X distraction eliminator
 
 The average developer loses hours to social media distractions daily. XYMake CLI gives you the power to engage with your audience without falling into the attention trap.
 
+Examples:
+
 ```bash
-# Share your work without opening X
-$ xy Just fixed that pesky bug everyone was talking about
+# Post linked to the repo in cwd
+$ xy hello, world!
 
 # Post without creating a thread
-$ xy -n Sharing this thought independently of my current project
+$ xy -n hello, world!
 
 # Open your current thread in browser when needed
 $ xy open
@@ -54,8 +39,6 @@ $ xy setup
 ```
 
 XYMake CLI connects to your X account securely through OAuth. Your first post is just one command away.
-
----
 
 ## Coming soon:
 
