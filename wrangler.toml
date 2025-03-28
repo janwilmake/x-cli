@@ -1,0 +1,8 @@
+name = "xymake_cli"
+compatibility_date = "2025-03-07"
+dev.port = 3000
+routes = [
+  { pattern = "cli.xymake.com", custom_domain = true }
+]
+
+assets.directory = "./public"

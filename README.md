@@ -19,6 +19,9 @@ Share your work on X directly from your terminal. No more context switching, no 
 
 XYMake CLI uses `git remote get-url origin` to check which repo you are talking about to create coherent threads based on your repository.
 
+> [!IMPORTANT]
+> I'm currently gauching interest in this tool and testing myself. Ratelimits are too low to use atm but if interested, [please DM](https://x.com/janwilmake)
+
 ## Why XYMake CLI?
 
 The average developer loses hours to social media distractions daily. XYMake CLI gives you the power to engage with your audience without falling into the attention trap.

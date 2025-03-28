@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X CLI - Stay in flow while building in public.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+
+    <meta name="description" content="X CLI - Stay in flow while building in public." />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://xymake.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="X CLI - Stay in flow while building in public" />
+    <meta property="og:description" content="Tweet about your repos from the terminal." />
+    <meta property="og:image" content="https://quickog.com/screenshot/cli.xymake.com" />
+    <meta property="og:image:alt" content="Tweet about your repos from the terminal." />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="cli.xymake.com" />
+    <meta name="twitter:image" content="https://quickog.com/screenshot/cli.xymake.com" />
+
+</head>
+
+<body class="bg-black text-white">
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-gray-800">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <svg class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.01l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                    </path>
+                </svg>
+                <span class="ml-3 font-bold text-xl">X CLI</span>
+            </div>
+            <div class="hidden md:flex space-x-4">
+                <a href="#features" class="hover:text-blue-400">Features</a>
+                <a href="#installation" class="hover:text-blue-400">Installation</a>
+                <a href="#about" class="hover:text-blue-400">About</a>
+            </div>
+            <div>
+                <a href="https://xymake.com/console"
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full font-bold transition-colors">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Stay in flow state while sharing your work</h1>
+                    <p class="text-xl text-gray-300 mb-8">Post to X directly from your terminal. No distractions, no
+                        context switching—just seamless integration between your code and your audience.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="https://xymake.com/console"
+                            class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-bold text-center transition-colors">Get
+                            Started</a>
+                        <a href="https://github.com/janwilmake/x-cli"
+                            class="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-bold text-center transition-colors flex items-center justify-center">
+                            <i class="fab fa-github mr-2"></i> GitHub Repo
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-8">
+                    <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <span class="ml-4 text-gray-400">terminal</span>
+                        </div>
+                        <pre class="font-mono text-sm text-green-400 overflow-x-auto">
+<span class="text-gray-400">$</span> npm i -g xymake@latest
+<span class="text-gray-400">$</span> xy setup
+
+<span class="text-gray-500"># Post directly from your terminal</span>
+<span class="text-gray-400">$</span> xy Just shipped a new feature! Check it out 🚀
+
+<span class="text-gray-500"># Open your current thread in browser</span>
+<span class="text-gray-400">$</span> xy open
+            </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 px-4 bg-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-3xl font-bold mb-12 text-center">Why XY CLI?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-black p-6 rounded-xl border border-gray-800">
+                    <div class="text-blue-400 text-3xl mb-4">🧠</div>
+                    <h3 class="text-xl font-bold mb-3">Stay in flow state</h3>
+                    <p class="text-gray-300">Post directly from your terminal without breaking your concentration or
+                        switching contexts.</p>
+                </div>
+                <div class="bg-black p-6 rounded-xl border border-gray-800">
+                    <div class="text-blue-400 text-3xl mb-4">⏱️</div>
+                    <h3 class="text-xl font-bold mb-3">Save hours daily</h3>
+                    <p class="text-gray-300">No more getting lost in feeds and notifications. Post and get back to work
+                        instantly.</p>
+                </div>
+                <div class="bg-black p-6 rounded-xl border border-gray-800">
+                    <div class="text-blue-400 text-3xl mb-4">🚀</div>
+                    <h3 class="text-xl font-bold mb-3">Build in public effectively</h3>
+                    <p class="text-gray-300">Share your progress naturally as part of your workflow with automatic
+                        repository linking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="installation" class="py-16 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-3xl font-bold mb-8 text-center">Get Started in Seconds</h2>
+            <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 max-w-3xl mx-auto">
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">1. Install XY CLI</h3>
+                        <div class="bg-black p-4 rounded-lg">
+                            <code class="font-mono text-green-400">npm i -g xymake@latest</code>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">2. Setup your account</h3>
+                        <div class="bg-black p-4 rounded-lg">
+                            <code class="font-mono text-green-400">xy setup</code>
+                        </div>
+                        <p class="text-gray-400 mt-2">This will open the authorization page in your browser.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">3. Start posting!</h3>
+                        <div class="bg-black p-4 rounded-lg">
+                            <code class="font-mono text-green-400">xy Just shipped an awesome feature! 🚀</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="py-16 px-4 bg-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-3xl font-bold mb-8 text-center">Coming Soon</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-black p-5 rounded-lg border border-gray-800">
+                    <code class="font-mono text-blue-400">xy history [n]</code>
+                    <p class="mt-2 text-gray-300">Get latest threads and read them as markdown with comments</p>
+                </div>
+                <div class="bg-black p-5 rounded-lg border border-gray-800">
+                    <code class="font-mono text-blue-400">xy ship</code>
+                    <p class="mt-2 text-gray-300">Commit to git and post to X simultaneously</p>
+                </div>
+                <div class="bg-black p-5 rounded-lg border border-gray-800">
+                    <code class="font-mono text-blue-400">xy snap</code>
+                    <p class="mt-2 text-gray-300">Create and share screenshots</p>
+                </div>
+                <div class="bg-black p-5 rounded-lg border border-gray-800">
+                    <code class="font-mono text-blue-400">xy ./path.png</code>
+                    <p class="mt-2 text-gray-300">Upload photos/videos with comments</p>
+                </div>
+                <div class="bg-black p-5 rounded-lg border border-gray-800">
+                    <code class="font-mono text-blue-400">xy ./path.ts:10-20</code>
+                    <p class="mt-2 text-gray-300">Annotate specific code sections</p>
+                </div>
+                <div class="bg-black p-5 rounded-lg border border-gray-800">
+                    <code class="font-mono text-blue-400">xy prompt</code>
+                    <p class="mt-2 text-gray-300">AI-powered tweet suggestions based on your code changes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl font-bold mb-8 text-center">About XY CLI</h2>
+            <div class="bg-black p-8 rounded-xl border border-gray-800">
+                <div class="flex flex-col md:flex-row items-center mb-8">
+                    <img src="/api/placeholder/120/120" alt="Jan Wilmake"
+                        class="w-24 h-24 rounded-full mb-4 md:mb-0 md:mr-6">
+                    <div>
+                        <h3 class="text-xl font-bold">Created by Jan Wilmake</h3>
+                        <p class="text-gray-300 mt-2">The potential impact is huge: saving hours of distractions every
+                            day, staying in flow in the editor.</p>
+                        <a href="https://x.com/janwilmake"
+                            class="inline-flex items-center text-blue-400 mt-3 hover:underline">
+                            <i class="fab fa-twitter mr-2"></i> @janwilmake
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <p class="text-gray-300">
+                        "I came up with the idea of making a CLI for posting on X after realizing I don't need to
+                        gatewall X if I don't have a reason to leave my editor to get stuff done on X! And what if it
+                        were connected to your repo you are working on, via the cwd? This idea just became good."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4 bg-blue-500 text-center">
+        <div class="container mx-auto max-w-3xl">
+            <h2 class="text-3xl font-bold mb-6">Ready to try XY CLI?</h2>
+            <p class="text-xl mb-8">No more distractions. Post directly from your terminal and stay in the flow.</p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
+                <a href="https://xymake.com/console"
+                    class="bg-black hover:bg-gray-900 text-white px-8 py-3 rounded-full font-bold text-center transition-colors">Login
+                    to X</a>
+                <a href="https://github.com/janwilmake/x-cli"
+                    class="bg-white hover:bg-gray-100 text-black px-8 py-3 rounded-full font-bold text-center transition-colors flex items-center justify-center">
+                    <i class="fab fa-github mr-2"></i> Check GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-gray-800">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-6 md:mb-0">
+                    <svg class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.01l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                        </path>
+                    </svg>
+                    <span class="ml-3 font-bold text-xl">XY CLI</span>
+                </div>
+                <p class="text-gray-400 text-sm">© 2025 XYMake. Built by developers, for developers.</p>
+            </div>
+            <div class="mt-8 flex justify-center space-x-6">
+                <a href="https://x.com/janwilmake" class="text-gray-400 hover:text-white">
+                    <i class="fab fa-twitter text-lg"></i>
+                </a>
+                <a href="https://github.com/janwilmake/x-cli" class="text-gray-400 hover:text-white">
+                    <i class="fab fa-github text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
