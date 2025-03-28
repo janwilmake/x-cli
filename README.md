@@ -1,6 +1,10 @@
 # X CLI to post to stop being distracted while shipping
 
 ```bash
+# Installation
+$ npm i -g xymake@latest
+$ xy setup
+
 # Creates X Post/thread linked to the repo in cwd
 $ xy hello, world!
 
@@ -14,13 +18,6 @@ $ xy open
 Share your work on X directly from your terminal. No more context switching, no more distractions—just seamless integration between your code and your audience.
 
 XYMake CLI uses `git remote get-url origin` to check which repo you are talking about to create coherent threads based on your repository.
-
-## Get started in seconds
-
-```bash
-$ npm install -g xymake
-$ xy setup
-```
 
 ## Why XYMake CLI?
 
