@@ -2,16 +2,6 @@
 
 ## Stay in flow. Post to X without leaving your editor.
 
-XYMake CLI is the developer's companion for sharing your work on X directly from your terminal. No more context switching, no more distractions—just seamless integration between your code and your audience.
-
-XYMake CLI uses `git remote get-url origin` to check which repo you are talking about to create coherent threads based on your repository.
-
-### ⚡ The X distraction eliminator
-
-The average developer loses hours to social media distractions daily. XYMake CLI gives you the power to engage with your audience without falling into the attention trap.
-
-Examples:
-
 ```bash
 # Post linked to the repo in cwd
 $ xy hello, world!
@@ -23,13 +13,14 @@ $ xy -n hello, world!
 $ xy open
 ```
 
-## Why XYMake CLI?
+Share your work on X directly from your terminal. No more context switching, no more distractions—just seamless integration between your code and your audience.
 
-**🧠 Stay in flow state** - Post directly from your terminal without breaking your concentration
+XYMake CLI uses `git remote get-url origin` to check which repo you are talking about to create coherent threads based on your repository.
 
-**⏱️ Save hours daily** - No more getting lost in feeds and notifications
+Examples:
 
-**🚀 Build in public effectively** - Share your progress naturally as part of your workflow
+- coming soon
+- coming soon
 
 ## Get started in seconds
 
@@ -37,6 +28,16 @@ $ xy open
 $ npm install -g xymake
 $ xy setup
 ```
+
+## Why XYMake CLI?
+
+The average developer loses hours to social media distractions daily. XYMake CLI gives you the power to engage with your audience without falling into the attention trap.
+
+**🧠 Stay in flow state** - Post directly from your terminal without breaking your concentration
+
+**⏱️ Save hours daily** - No more getting lost in feeds and notifications
+
+**🚀 Build in public effectively** - Share your progress naturally as part of your workflow
 
 XYMake CLI connects to your X account securely through OAuth. Your first post is just one command away.
 
