@@ -20,7 +20,14 @@ Share your work on X directly from your terminal. No more context switching, no 
 XYMake CLI uses `git remote get-url origin` to check which repo you are talking about to create coherent threads based on your repository.
 
 > [!IMPORTANT]
-> I'm currently gauching interest in this tool and testing myself. Ratelimits are too low to use atm but if interested, [please DM](https://x.com/janwilmake)
+> I'm currently gauching interest in this tool and using myself.
+>
+> [To my great disappointment, app-wide ratelimits is 17 per 24-hours](https://x.com/janwilmake/status/1905561310437273731) to use atm but if interested, you can try, or connect your own api key from https://developer.x.com/en.
+>
+> What you can do?
+>
+> - Please spread the word about the X API ratelimts suck by quoting above post.
+> - If you want to pay for this, [please DM](https://x.com/janwilmake), and I'll figure out a pricing after enough people did.
 
 ## Why XYMake CLI?
 
@@ -104,26 +111,28 @@ API
 
 CLI
 
-- package `npm i -g xymake` with bin `xy`
-- `xy setup` opens browser to https://cli.xymake.com and requests pasting api key and x username. Then, sets it in global config location
-- `xy [-n] ...` to send a tweet using the xymake api.
+- ✅ package `npm i -g xymake` with bin `xy`
+- ✅ `xy setup` opens browser to https://cli.xymake.com and requests pasting api key and x username. Then, sets it in global config location
+- ✅ `xy [-n] ...` to send a tweet using the xymake api.
   - If no config api key yet, error
   - If `-n` it won't connect to a thread, will just post the tweet
   - Finds current git remote and branch and verifies it to be github (or errors if not found)
   - Will start new thread if the latest one is over a day ago (but will quote old one). Will always attach tweets to repos by adding the repo url in a reply to the first tweet.
   - keep state of last tweet id + date per repo in `xymake.json` in repo root; `{"posts":{"url":string,"createdAt":string,"branch": string}[]}`
-
-## BACKLOG
+- ✅ `xy open` opens current thread in browser
 
 Easy onboarding
 
-- New page for dashboard with API key for CLI.
-- Generate and show API key and scopes are shown as well
-- New landingpage https://cli.xymake.com that explains the X CLI
+- ✅ New page for dashboard with API key for CLI.
+- ✅ Generate and show API key and scopes are shown as well
+- ✅ New landingpage https://cli.xymake.com that explains the X CLI
 
-Validation
+## BACKLOG
 
-- Already validated from myself. let's start by trying it myself and see if it sticks.
+Easier onboarding:
+
+- Create client for cli.xymake.com instead with redirect url
+- Figure out if ratelimit is decent enough
 
 More CLI
 
