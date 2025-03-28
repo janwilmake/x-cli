@@ -1,9 +1,7 @@
-# X CLI
-
-## Stay in flow. Post to X about your repos without leaving your editor.
+# X CLI to post to stop being distracted while shipping
 
 ```bash
-# Post linked to the repo in cwd
+# Creates X Post/thread linked to the repo in cwd
 $ xy hello, world!
 
 # Post without connecting to a github repo
@@ -16,11 +14,6 @@ $ xy open
 Share your work on X directly from your terminal. No more context switching, no more distractions—just seamless integration between your code and your audience.
 
 XYMake CLI uses `git remote get-url origin` to check which repo you are talking about to create coherent threads based on your repository.
-
-Examples:
-
-- coming soon
-- coming soon
 
 ## Get started in seconds
 
