@@ -253,10 +253,15 @@ async function sendTweet(content, isNewThread) {
       url = `${API_BASE_URL}/${config.username}/${action}/${tweetId}/${encodedContent}?apiKey=${config.apiKey}`;
     }
 
-    const response = await fetchJson(url);
+    const response = await fetch(url);
 
-    if (!response.success) {
-      throw new Error(`Failed to post tweet: ${JSON.stringify(response)}`);
+    const json = await response.json();
+    if (!response.ok) {
+      const limit = response.headers.get("x-rate-limit-limit");
+      const remaining = response.headers.get("x-rate-limit-remaining");
+      const reset = response.headers.get("x-rate-limit-reset");
+      const data = { json, ratelimit: { limit, remaining, reset } };
+      throw new Error(`Failed to post tweet: ${JSON.stringify(data)}`);
     }
 
     console.log(
@@ -380,6 +385,7 @@ async function fetchJson(url) {
       res.on("end", () => {
         try {
           const json = JSON.parse(data);
+
           resolve(json);
         } catch (error) {
           reject(new Error(`Failed to parse response: ${error.message}`));
