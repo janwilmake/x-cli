@@ -1,6 +1,4 @@
-# XYMake CLI
-
-## Stay in flow. Post to X without leaving your editor.
+# Stay in flow. Post to X about your repos without leaving your editor.
 
 ```bash
 # Post linked to the repo in cwd
