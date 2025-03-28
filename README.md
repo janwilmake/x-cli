@@ -105,9 +105,13 @@ API
 CLI
 
 - package `npm i -g xymake` with bin `xy`
-- CLI that requests API key or opens browser, sets it in global config location
-- keep state of last tweet id + date per repo in `xymake.json` in repo.
-- CLI `xy ...` to send a tweet. uses current git of current folder to know if its a thread or not. will start new thread if the latest one is over a day ago (but will quote old one). will always attach tweets to repos by adding the repo url in the second tweet.
+- `xy setup` opens browser to https://cli.xymake.com and requests pasting api key and x username. Then, sets it in global config location
+- `xy [-n] ...` to send a tweet using the xymake api.
+  - If no config api key yet, error
+  - If `-n` it won't connect to a thread, will just post the tweet
+  - Finds current git remote and branch and verifies it to be github (or errors if not found)
+  - Will start new thread if the latest one is over a day ago (but will quote old one). Will always attach tweets to repos by adding the repo url in a reply to the first tweet.
+  - keep state of last tweet id + date per repo in `xymake.json` in repo root; `{"posts":{"url":string,"createdAt":string,"branch": string}[]}`
 
 ## BACKLOG
 
