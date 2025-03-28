@@ -31,6 +31,11 @@ async function main() {
     return;
   }
 
+  if (command === "open") {
+    await openLatestTweet();
+    return;
+  }
+
   // Handle tweet command
   let isNewThread = false;
   let tweetContent = "";
@@ -45,18 +50,58 @@ async function main() {
   await sendTweet(tweetContent, isNewThread);
 }
 
-// Show help info
+// Open the latest tweet for the current repo/branch
+async function openLatestTweet() {
+  // Check config
+  const config = readConfig();
+  if (!config || !config.apiKey || !config.username) {
+    console.error(
+      'Please run "xy setup" first to configure your API key and username.',
+    );
+    process.exit(1);
+  }
+
+  try {
+    // Get repo info
+    const repoInfo = await getRepoInfo();
+    const state = getStateFile();
+
+    // Find the latest post for this repo and branch
+    const latestPost = state.posts.find(
+      (post) => post.url === repoInfo.url && post.branch === repoInfo.branch,
+    );
+
+    if (!latestPost) {
+      console.error("No tweets found for this repository and branch.");
+      console.log(`Run 'xy "Your first tweet about this repo"' to create one.`);
+      process.exit(1);
+    }
+
+    // Construct tweet URL
+    const tweetUrl = `https://twitter.com/${config.username}/status/${latestPost.tweetId}`;
+    console.log(`Opening latest tweet in your browser: ${tweetUrl}`);
+
+    // Open the tweet in a browser
+    openBrowser(tweetUrl);
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+// Update showHelp function to include the new 'open' command
 function showHelp() {
   console.log(`
-XYMake CLI - Post tweets about your code
-
-Commands:
-  xy setup              Setup your API key and X username
-  xy [-n] <message>     Post a tweet with your message
-                        Use -n to start a new thread
-
-For more information, visit https://xymake.com
-  `);
+  XYMake CLI - Post tweets about your code
+  
+  Commands:
+    xy setup              Setup your API key and X username
+    xy open               Open the latest tweet for current repo/branch in browser
+    xy [-n] <message>     Post a tweet with your message
+                          Use -n to start a new thread
+  
+  For more information, visit https://xymake.com
+    `);
 }
 
 // Setup configuration
@@ -226,7 +271,7 @@ async function sendTweet(content, isNewThread) {
 
     // Post repo URL as a reply if this is a new thread
     if (shouldPostRepoUrl) {
-      const repoUrlContent = `Check out this project at ${repoInfo.url}`;
+      const repoUrlContent = `Here's the repo (powered by X CLI) \n ${repoInfo.url}`;
       const repoUrlEncodedContent = encodeURIComponent(repoUrlContent);
       const repoUrlTweetUrl = `${API_BASE_URL}/${config.username}/reply/${response.tweet_id}/${repoUrlEncodedContent}?apiKey=${config.apiKey}`;
 
