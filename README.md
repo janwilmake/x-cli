@@ -4,7 +4,7 @@
 
 XYMake CLI is the developer's companion for sharing your work on X directly from your terminal. No more context switching, no more distractions—just seamless integration between your code and your audience.
 
-- XYMake uses `git remote get-url origin` to check which repo you are talking about to create coherent threads based on your repository.
+XYMake CLI uses `git remote get-url origin` to check which repo you are talking about to create coherent threads based on your repository.
 
 ### ⚡ The X distraction eliminator
 
@@ -16,7 +16,7 @@ Examples:
 # Post linked to the repo in cwd
 $ xy hello, world!
 
-# Post without creating a thread
+# Post without connecting to a github repo
 $ xy -n hello, world!
 
 # Open your current thread in browser when needed
