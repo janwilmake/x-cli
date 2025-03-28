@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-//https://xymake.com/login?scope=users.read follows.read tweet.read offline.access tweet.write
 const fs = require("fs");
 const path = require("path");
 const { exec } = require("child_process");
@@ -13,7 +12,8 @@ const CONFIG_FILE = path.join(
   ".xymake-config.json",
 );
 const API_BASE_URL = "https://xymake.com";
-const CLI_AUTH_URL = "https://cli.xymake.com";
+const CLI_AUTH_URL =
+  "https://xymake.com/login?scope=users.read follows.read tweet.read offline.access tweet.write";
 
 // Main function
 async function main() {
