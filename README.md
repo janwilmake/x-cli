@@ -1,5 +1,77 @@
 # XYMake CLI
 
+## Stay in flow. Post to X without leaving your editor.
+
+XYMake CLI is the developer's companion for sharing your work on X directly from your terminal. No more context switching, no more distractions—just seamless integration between your code and your audience.
+
+### 🔄 Post as you code
+
+With a simple command `xy`, create threads about your repository as you build it. XYMake intelligently tracks your projects, creating organized threads tied to your repositories.
+
+```bash
+$ xy Just implemented a new feature that solves...
+```
+
+### 🧵 Smart threading
+
+XYMake automatically maintains context between your posts, creating coherent threads based on your repository. It knows when to continue an existing thread or start a new one.
+
+### 🔨 Built for developers
+
+- Stays within your workflow - never leave your editor
+- Repository-aware threading
+- Automatic repo linking in threads
+- Maintains your coding flow state
+
+### ⚡ The X distraction eliminator
+
+The average developer loses hours to social media distractions daily. XYMake CLI gives you the power to engage with your audience without falling into the attention trap.
+
+```bash
+# Share your work without opening X
+$ xy Just fixed that pesky bug everyone was talking about
+
+# Post without creating a thread
+$ xy -n Sharing this thought independently of my current project
+
+# Open your current thread in browser when needed
+$ xy open
+```
+
+## Why XYMake CLI?
+
+**🧠 Stay in flow state** - Post directly from your terminal without breaking your concentration
+
+**⏱️ Save hours daily** - No more getting lost in feeds and notifications
+
+**🚀 Build in public effectively** - Share your progress naturally as part of your workflow
+
+## Get started in seconds
+
+```bash
+$ npm install -g xymake
+$ xy setup
+```
+
+XYMake CLI connects to your X account securely through OAuth. Your first post is just one command away.
+
+---
+
+## Coming soon:
+
+- `xy history [n]` - Get latest threads and read them as markdown with comments
+- `xy ship` - Commit to git and post to X simultaneously
+- `xy snap` - Create and share screenshots
+- `xy ./path.png` - Upload photos/videos with comments
+- `xy ./path.ts:10-20` - Annotate specific code sections
+- `xy yap` - Record, transcribe, and send audio
+- `xy find` - Find relevant tweets from CLI and respond easily
+- `xy prompt` - AI-powered tweet suggestions based on your code changes
+
+---
+
+Built by developers, for developers. [Jan Wilmake](https://x.com/janwilmake)
+
 ## Origin story - February + March 2025
 
 I came up with the idea of making a CLI for posting on X on February 10 after seeing someone posting one on X and seeing it was very hard to use (having to make a client/token etc), but didn't spend much time trying it. I didn't think much of the time. But as time went on, the idea of doing more with the X platform developed further. Among other things, I built https://threads.forgithub.com and around that time I also met @brianships who made https://socialdata.tools. One of the things we talked about is the following (Source: https://xymake.com/janwilmake/status/1903776061239767211)
@@ -56,7 +128,7 @@ API
 CLI
 
 - package `npm i -g xymake` with bin `xy`
-- CLI that requests API key or opens browser, sets it
+- CLI that requests API key or opens browser, sets it in global config location
 - keep state of last tweet id + date per repo in `xymake.json` in repo.
 - CLI `xy ...` to send a tweet. uses current git of current folder to know if its a thread or not. will start new thread if the latest one is over a day ago (but will quote old one). will always attach tweets to repos by adding the repo url in the second tweet.
 
