@@ -20,7 +20,7 @@ Share your work on X directly from your terminal. No more context switching, no 
 XYMake CLI uses `git remote get-url origin` to check which repo you are talking about to create coherent threads based on your repository.
 
 > [!IMPORTANT]
-> I'm currently gauching interest in this tool and using myself.
+> I'm currently gauching interest in this tool and using myself. [See demo](https://x.com/janwilmake/status/1905542045332050431)
 >
 > [To my great disappointment, app-wide ratelimits is 17 per 24-hours](https://x.com/janwilmake/status/1905561310437273731) to use atm but if interested, you can try, or connect your own api key from https://developer.x.com/en.
 >
