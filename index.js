@@ -203,7 +203,7 @@ async function sendTweet(content, isNewThread) {
     let url;
 
     if (action === "new") {
-      url = `${API_BASE_URL}/${config.username}/${action}/0/${encodedContent}?apiKey=${config.apiKey}`;
+      url = `${API_BASE_URL}/${config.username}/${action}/${encodedContent}?apiKey=${config.apiKey}`;
     } else {
       url = `${API_BASE_URL}/${config.username}/${action}/${tweetId}/${encodedContent}?apiKey=${config.apiKey}`;
     }
