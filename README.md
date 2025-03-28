@@ -1,4 +1,6 @@
-# Stay in flow. Post to X about your repos without leaving your editor.
+# X CLI
+
+## Stay in flow. Post to X about your repos without leaving your editor.
 
 ```bash
 # Post linked to the repo in cwd
