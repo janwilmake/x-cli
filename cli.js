@@ -261,6 +261,7 @@ async function sendTweet(content, isNewThread) {
       const remaining = response.headers.get("x-rate-limit-remaining");
       const reset = response.headers.get("x-rate-limit-reset");
       const data = { json, ratelimit: { limit, remaining, reset } };
+      console.log({ content, encodedContent });
       throw new Error(`Failed to post tweet: ${JSON.stringify(data)}`);
     }
 

@@ -129,10 +129,17 @@ Easy onboarding
 
 ## BACKLOG
 
-Easier onboarding:
+For me:
 
-- Create client for cli.xymake.com instead with redirect url
-- Figure out if ratelimit is decent enough
+- Fix token refresh
+- Make redirect url in xymake configurable (securely)
+- Alter CLI such that I can add core threads to each repo and it'd allow me to pick one any day to start a quoted post of it. `x -s` would allow to select a thread first, or if it's been >24h, it will allow this. `xymake.json` should become an accumulation of useful threads that can also be altered easily!
+- Post 17x per day in this way.
+
+For waitlist:
+
+- Find 10 people that want to use this daily (Current: 2/10) - change console to preselling: sponsor €50+ to get access asap
+- Buy basic plan $200/month
 
 More CLI
 
