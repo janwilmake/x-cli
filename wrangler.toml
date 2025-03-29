@@ -1,8 +1,7 @@
 name = "xymake_cli"
 compatibility_date = "2025-03-07"
 dev.port = 3000
-routes = [
-  { pattern = "cli.xymake.com", custom_domain = true }
-]
-
+route.pattern = "cli.xymake.com"
+route.custom_domain = true
+main = "./console.js"
 assets.directory = "./public"

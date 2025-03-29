@@ -12,8 +12,9 @@ const CONFIG_FILE = path.join(
   ".xymake-config.json",
 );
 const API_BASE_URL = "https://xymake.com";
-const CLI_AUTH_URL =
-  "https://xymake.com/login?scope=users.read follows.read tweet.read offline.access tweet.write";
+const CLI_AUTH_URL = `https://xymake.com/login?scope=${encodeURIComponent(
+  "users.read follows.read tweet.read offline.access tweet.write",
+)}&redirect_uri=https://cli.xymake.com/console`;
 
 // Main function
 async function main() {
