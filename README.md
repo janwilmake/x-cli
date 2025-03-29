@@ -1,4 +1,4 @@
-# X CLI to post to stop being distracted while shipping
+# X CLI - Stay in flow while building in public
 
 ```bash
 # Installation
