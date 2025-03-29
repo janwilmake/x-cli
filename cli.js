@@ -249,21 +249,28 @@ async function sendTweet(content, isNewThread) {
     let url;
 
     if (action === "new") {
-      url = `${API_BASE_URL}/${config.username}/${action}/${encodedContent}?apiKey=${config.apiKey}`;
+      url = `${API_BASE_URL}/${config.username}/${action}/${encodedContent}?apiKey=${config.apiKey}&username=${config.username}`;
     } else {
-      url = `${API_BASE_URL}/${config.username}/${action}/${tweetId}/${encodedContent}?apiKey=${config.apiKey}`;
+      url = `${API_BASE_URL}/${config.username}/${action}/${tweetId}/${encodedContent}?apiKey=${config.apiKey}&username=${config.username}`;
     }
 
-    const response = await fetch(url);
-
-    const json = await response.json();
+    console.log({ url });
+    const response = await fetch(url, {
+      headers: { accept: "application/json" },
+    });
+    const cookie = response.headers.get("Set-Cookie");
+    if (cookie) {
+      console.log("need to set cookie", { cookie });
+    }
+    const text = await response.text();
     if (!response.ok) {
       const limit = response.headers.get("x-rate-limit-limit");
       const remaining = response.headers.get("x-rate-limit-remaining");
       const reset = response.headers.get("x-rate-limit-reset");
-      const data = { json, ratelimit: { limit, remaining, reset } };
       console.log({ content, encodedContent });
-      throw new Error(`Failed to post tweet: ${JSON.stringify(data)}`);
+      throw new Error(
+        `Failed to post tweet: ${text}, limit=${limit}, remaining=${remaining}, reset=${reset}`,
+      );
     }
 
     console.log(
@@ -280,9 +287,13 @@ async function sendTweet(content, isNewThread) {
     if (shouldPostRepoUrl) {
       const repoUrlContent = `Here's the repo (powered by X CLI) \n ${repoInfo.url}`;
       const repoUrlEncodedContent = encodeURIComponent(repoUrlContent);
-      const repoUrlTweetUrl = `${API_BASE_URL}/${config.username}/reply/${response.tweet_id}/${repoUrlEncodedContent}?apiKey=${config.apiKey}`;
+      const repoUrlTweetUrl = `${API_BASE_URL}/${config.username}/reply/${response.tweet_id}/${repoUrlEncodedContent}?apiKey=${config.apiKey}&username=${config.username}`;
 
-      const repoUrlResponse = await fetchJson(repoUrlTweetUrl);
+      const repoUrlResponse = await fetch(repoUrlTweetUrl);
+      const cookie = repoUrlResponse.headers.get("Set-Cookie");
+      if (cookie) {
+        console.log("need to set cookie", { cookie });
+      }
 
       if (!repoUrlResponse.success) {
         console.warn(
@@ -361,45 +372,6 @@ function prompt(question) {
       resolve(data.trim());
       stdin.pause();
     });
-  });
-}
-
-async function fetchJson(url) {
-  return new Promise((resolve, reject) => {
-    const parsedUrl = new URL(url);
-    const options = {
-      hostname: parsedUrl.hostname,
-      path: parsedUrl.pathname + parsedUrl.search,
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "User-Agent": "XYMake CLI",
-      },
-    };
-
-    const req = https.request(options, (res) => {
-      let data = "";
-
-      res.on("data", (chunk) => {
-        data += chunk;
-      });
-
-      res.on("end", () => {
-        try {
-          const json = JSON.parse(data);
-
-          resolve(json);
-        } catch (error) {
-          reject(new Error(`Failed to parse response: ${error.message}`));
-        }
-      });
-    });
-
-    req.on("error", (error) => {
-      reject(error);
-    });
-
-    req.end();
   });
 }
 
