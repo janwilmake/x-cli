@@ -131,7 +131,7 @@ Easy onboarding
 For me:
 
 - ✅ Added login redirect
-- Add `getSubscriber` to tweet endpoint and ensure the refresh flow works as expected
+- ✅ Add `getSubscriber` to tweet endpoint and ensure the refresh flow works as expected
 - Alter CLI such that I can add core threads to each repo and it'd allow me to pick one any day to start a quoted post of it. `x -s` would allow to select a thread first, or if it's been >24h, it will allow this. `xymake.json` should become an accumulation of useful threads that can also be altered easily!
 - Post 17x per day in this way.
 
