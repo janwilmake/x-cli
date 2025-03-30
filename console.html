@@ -63,14 +63,36 @@
                 </div>
             </div>
 
+            <!-- Beta Notice -->
+            <div class="xy-border rounded-xl p-6 mb-8 bg-blue-900/20">
+                <h2 class="text-xl font-bold mb-3">Public Beta Notice</h2>
+                <p class="text-gray-300 mb-4">X CLI is currently in public beta. We are sharing an app based ratelimit
+                    of 17 posts per day, so it's likely you'll quickly/immediately hit the rate limit. After there's
+                    sufficient demand, I'll purchase the $200/m plan and the cap will become 10 tweets per day per user,
+                    with $0.10 per tweet for additional tweets.</p>
+
+                <p class="text-gray-300 mb-3">Please spread the word and consider donating to speed up progress:</p>
+                <ul class="list-disc list-inside text-blue-400 space-y-1 ml-2">
+                    <li><a href="https://cli.xymake.com" class="hover:underline">https://cli.xymake.com</a></li>
+                    <li><a href="https://github.com/janwilmake/xymake.cli"
+                            class="hover:underline">https://github.com/janwilmake/xymake.cli</a></li>
+                    <li><a href="https://github.com/sponsors/janwilmake"
+                            class="hover:underline">https://github.com/sponsors/janwilmake</a></li>
+                </ul>
+            </div>
+
             <!-- Token Section -->
             <div class="xy-border rounded-xl p-6 mb-8 bg-white/5">
                 <h2 class="text-xl font-bold mb-4">X API Access Token</h2>
                 <p class="text-gray-400 mb-4">Use this token with the X CLI to interact with your account</p>
 
                 <div class="relative mb-4">
-                    <input type="text" id="tokenInput" class="w-full px-4 py-3 rounded token-input text-gray-300"
+                    <input type="password" id="tokenInput" class="w-full px-4 py-3 rounded token-input text-gray-300"
                         value="{{apiKey}}" readonly>
+                    <button id="toggleVisibility"
+                        class="absolute right-24 top-2 bg-gray-700 text-white px-3 py-1 rounded button-glow">
+                        Show
+                    </button>
                     <button id="copyButton"
                         class="absolute right-2 top-2 bg-blue-600 text-white px-3 py-1 rounded button-glow">
                         Copy
@@ -118,11 +140,32 @@
     </main>
 
     <script>
+        // Toggle token visibility
+        document.getElementById('toggleVisibility').addEventListener('click', function () {
+            const tokenInput = document.getElementById('tokenInput');
+            const type = tokenInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            tokenInput.setAttribute('type', type);
+            this.textContent = type === 'password' ? 'Show' : 'Hide';
+        });
+
         // Copy token to clipboard
         document.getElementById('copyButton').addEventListener('click', function () {
             const tokenInput = document.getElementById('tokenInput');
+            const originalType = tokenInput.getAttribute('type');
+
+            // Temporarily make visible if hidden
+            if (originalType === 'password') {
+                tokenInput.setAttribute('type', 'text');
+            }
+
+            // Select and copy
             tokenInput.select();
             document.execCommand('copy');
+
+            // Restore original visibility
+            if (originalType === 'password') {
+                tokenInput.setAttribute('type', 'password');
+            }
 
             // Change button text temporarily
             this.textContent = 'Copied!';
