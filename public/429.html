@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-black">
+
+<head>
+    <!-- 100% privacy-first analytics -->
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Rate Limit Reached - XYMake CLI</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        .xy-gradient {
+            background: linear-gradient(135deg, #000000 0%, #1d1d1d 100%);
+        }
+
+        .xy-border {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .button-glow:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .donate-button-glow {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(59, 130, 246, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+    </style>
+</head>
+
+<body class="text-white">
+    <main class="min-h-screen xy-gradient flex flex-col justify-center">
+        <div class="max-w-3xl mx-auto px-4 py-16">
+            <!-- Header -->
+            <header class="flex justify-center items-center mb-8">
+                <div class="flex items-center gap-3">
+                    <svg viewBox="0 0 24 24" class="w-8 h-8" fill="currentColor">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                    <span class="font-bold text-xl">XYMake CLI</span>
+                </div>
+            </header>
+
+            <!-- Rate Limit Error Card -->
+            <div class="xy-border rounded-xl p-8 mb-8 bg-red-900/20 text-center">
+                <div class="flex justify-center mb-6">
+                    <svg class="w-16 h-16 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                </div>
+                <h1 class="text-3xl font-bold mb-4">Rate Limit Reached</h1>
+                <p class="text-xl text-gray-300 mb-6">We're experiencing high usage of our shared X API resources</p>
+
+                <div class="bg-white/10 p-6 rounded-lg mb-8">
+                    <h2 class="text-xl font-bold mb-4">Why am I seeing this?</h2>
+                    <p class="text-gray-300 mb-4">X CLI is currently in public beta. We are sharing an app based
+                        ratelimit of 17 posts per day, so users quickly hit the rate limit. After there's sufficient
+                        demand, we'll purchase the $200/m plan and the cap will become 20 tweets per day per user, with
+                        $0.10 per tweet for additional tweets.</p>
+                </div>
+
+                <!-- Primary CTA -->
+                <div class="mb-10">
+                    <a href="https://github.com/sponsors/janwilmake"
+                        class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-bold donate-button-glow hover:bg-blue-500 transition-colors">
+                        Sponsor This Project
+                    </a>
+                    <p class="text-gray-400 mt-3">Your contribution helps us upgrade the API plan and increase limits
+                    </p>
+                </div>
+
+                <!-- Secondary Links -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <a href="https://cli.xymake.com"
+                        class="xy-border bg-white/5 hover:bg-white/10 p-4 rounded-lg flex items-center justify-center gap-2 transition-colors">
+                        <span>Visit XYMake CLI Website</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                    <a href="https://github.com/janwilmake/xymake.cli"
+                        class="xy-border bg-white/5 hover:bg-white/10 p-4 rounded-lg flex items-center justify-center gap-2 transition-colors">
+                        <span>GitHub Repository</span>
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+
+                <a href="javascript:history.back()" class="text-gray-400 hover:text-white transition-colors">
+                    ← Return to previous page
+                </a>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center text-gray-500 border-t border-white/10 pt-8">
+                <p class="text-sm">
+                    © 2025 XYMake. All rights reserved. Not affiliated with X Corp.
+                </p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

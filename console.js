@@ -67,6 +67,15 @@ export default {
           },
         });
       }
+      if (userResponse.status === 429) {
+        // Redirect to login if not authenticated
+        return new Response("429 hit", {
+          status: 307,
+          headers: {
+            Location: "/429",
+          },
+        });
+      }
       if (!userResponse.ok) {
         return new Response(
           `Failed to fetch user data: ${userResponse.status}`,
