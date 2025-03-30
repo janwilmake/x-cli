@@ -1,8 +1,12 @@
 {
   "name": "xymake",
-  "version": "0.0.9",
+  "version": "0.0.13",
   "description": "CLI tool for posting to X about your repos",
   "main": "cli.js",
+  "files": [
+    "cli.js",
+    "README.md"
+  ],
   "bin": {
     "xy": "./cli.js"
   }

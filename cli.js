@@ -139,6 +139,27 @@ function readConfig() {
   return null;
 }
 
+function updateConfig(newConfig) {
+  const config = readConfig() || {};
+  fs.writeFileSync(
+    CONFIG_FILE,
+    JSON.stringify({ ...config, ...newConfig }, null, 2),
+  );
+  console.log("Updated config!");
+}
+
+const parseAccessToken = (cookie) => {
+  const rows = cookie.split(";").map((x) => x.trim());
+
+  // Get X access token from cookies
+  const xAccessToken = rows
+    .find((row) => row.startsWith("x_access_token="))
+    ?.split("=")[1]
+    ?.trim();
+
+  return xAccessToken ? decodeURIComponent(xAccessToken) : undefined;
+};
+
 // Get repo information
 async function getRepoInfo() {
   try {
@@ -254,13 +275,13 @@ async function sendTweet(content, isNewThread) {
       url = `${API_BASE_URL}/${config.username}/${action}/${tweetId}/${encodedContent}?apiKey=${config.apiKey}&username=${config.username}`;
     }
 
-    console.log({ url });
     const response = await fetch(url, {
       headers: { accept: "application/json" },
     });
     const cookie = response.headers.get("Set-Cookie");
     if (cookie) {
-      console.log("need to set cookie", { cookie });
+      updateConfig({ apiKey: parseAccessToken(cookie) });
+      console.log("Refreshed API Key");
     }
     const text = await response.text();
     if (!response.ok) {
@@ -283,22 +304,25 @@ async function sendTweet(content, isNewThread) {
       }`,
     );
 
+    const json = JSON.parse(text);
+
     // Post repo URL as a reply if this is a new thread
     if (shouldPostRepoUrl) {
       const repoUrlContent = `Here's the repo (powered by X CLI) \n ${repoInfo.url}`;
       const repoUrlEncodedContent = encodeURIComponent(repoUrlContent);
-      const repoUrlTweetUrl = `${API_BASE_URL}/${config.username}/reply/${response.tweet_id}/${repoUrlEncodedContent}?apiKey=${config.apiKey}&username=${config.username}`;
+      const repoUrlTweetUrl = `${API_BASE_URL}/${config.username}/reply/${json.tweet_id}/${repoUrlEncodedContent}?apiKey=${config.apiKey}&username=${config.username}`;
 
       const repoUrlResponse = await fetch(repoUrlTweetUrl);
       const cookie = repoUrlResponse.headers.get("Set-Cookie");
       if (cookie) {
-        console.log("need to set cookie", { cookie });
+        updateConfig({ apiKey: parseAccessToken(cookie) });
+        console.log("Refreshed API Key");
       }
 
-      if (!repoUrlResponse.success) {
+      if (!repoUrlResponse.ok) {
         console.warn(
           `Warning: Failed to post repo URL tweet: ${JSON.stringify(
-            repoUrlResponse,
+            await repoUrlResponse.text(),
           )}`,
         );
       } else {
@@ -314,7 +338,7 @@ async function sendTweet(content, isNewThread) {
     state.posts.push({
       url: repoInfo.url,
       branch: repoInfo.branch,
-      tweetId: response.tweet_id,
+      tweetId: json.tweet_id,
       createdAt: new Date().toISOString(),
     });
 
