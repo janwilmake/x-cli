@@ -8,7 +8,7 @@ $ xy setup
 # Creates X Post/thread linked to the repo in cwd
 $ xy hello, world!
 
-# Post without connecting to a github repo
+# Post a new thread instead of commenting on the active thread
 $ xy -n hello, world!
 
 # Open your current thread in browser when needed
@@ -17,7 +17,7 @@ $ xy open
 
 Share your work on X directly from your terminal. No more context switching, no more distractions—just seamless integration between your code and your audience. [Demo here](https://x.com/janwilmake/status/1905542045332050431)
 
-XYMake CLI uses `git remote get-url origin` to check which repo you are talking about to create coherent threads based on your repository.
+XYMake CLI uses `git` to check which repo/brach you are talking about to create coherent threads based on your repository. It also adds automatic links to the repo or to a specific file when prompted.
 
 > [!IMPORTANT]
 > X CLI is currently in public beta. We are sharing an app based [ratelimit of 17 posts per day](https://x.com/janwilmake/status/1905561310437273731), so it's likely you'll quickly/immediately hit the rate limit. After there's sufficient demand, I'll purchase the $200/m plan and the cap will become 20 tweets per day per user, with $0.10 per tweet for additional tweets.
@@ -40,20 +40,22 @@ The average developer loses hours to social media distractions daily. XYMake CLI
 
 XYMake CLI connects to your X account securely through OAuth. Your first post is just one command away.
 
-## Coming soon:
+## Wishlist:
 
-- `xy history [n]` - Get latest threads and read them as markdown with comments
-- `xy ship` - Commit to git and post to X simultaneously
-- `xy snap` - Create and share screenshots
-- `xy ./path.png` - Upload photos/videos with comments
-- `xy ./path.ts:10-20` - Annotate specific code sections
-- `xy yap` - Record, transcribe, and send audio
-- `xy find` - Find relevant tweets from CLI and respond easily
-- `xy prompt` - AI-powered tweet suggestions based on your code changes
+- `xy history` - Pick thread from linked threads, print them as markdown with comments
+- `xy ./path.png [...message]` - Upload photos/videos with comments
+- `xy yap` - Record, transcribe, reformat/restructure with LLM, tweet as a new thread.
+- `xy find` - Find relevant recent tweets, print in CLI, and respond easily
+
+## What X CLI is not / Out of Scope
+
+XYMake does not allow AI to write/suggest the tweet (in different ways, e.g. based on commit message or changes - cc https://tweetgit.com https://x.com/dzhohola).
+
+I personally think we should not be doing this until AI is better than yourself, but that it will never be as people crave authenticity. Therefore, this is a dangerous path to go down.
 
 ---
 
-Built by developers, for developers. [Jan Wilmake](https://x.com/janwilmake)
+❤️ Built by developers, for developers. [Jan Wilmake](https://x.com/janwilmake)
 
 ## Origin story - February + March 2025
 
@@ -119,6 +121,7 @@ CLI
   - Will start new thread if the latest one is over a day ago (but will quote old one). Will always attach tweets to repos by adding the repo url in a reply to the first tweet.
   - keep state of last tweet id + date per repo in `xymake.json` in repo root; `{"posts":{"url":string,"createdAt":string,"branch": string}[]}`
 - ✅ `xy open` opens current thread in browser
+- ✅ someone like https://x.com/yagiznizipli posts all PRs on X and that also kinda works but X wants X. branch detection is definitely required to determine the thread!
 
 Easy onboarding
 
@@ -126,9 +129,7 @@ Easy onboarding
 - ✅ Generate and show API key and scopes are shown as well
 - ✅ New landingpage https://cli.xymake.com that explains the X CLI
 
-## BACKLOG
-
-For me:
+## Quality of life improvements (2025-03-31)
 
 - ✅ Added login redirect
 - ✅ Add `getSubscriber` to tweet endpoint and ensure the refresh flow works as expected
@@ -138,8 +139,15 @@ For me:
 - ✅ Support for referencing files. For now, if the first param after xymake matches a filepath relative from cwd, ensure to get the git root relative, and append https://github.com/owner/repo/blob/branch/...path instead of the regular appendix!
 - ✅ create config for adding post to a community on a repo-basis but also a default fallback!
 - ✅ Remove posts property, added threads property, and it picks the latest thread now.
-- Finish thread array build logic
-- Alter CLI such that I can add core threads to each repo and it'd allow me to pick one any day to start a quoted post of it. `x -s` would allow to select a thread first, or if it's been >24h, it will allow this. `xymake.json` should become an accumulation of useful threads that can also be altered easily!
+- ✅ `xy ./path.ts` - Link to a specific file on github
+
+## BACKLOG
+
+A little more improvements
+
+- Allow `community_id` param for new posts in xymake api (ignored now)
+- Finish thread array logic after i see the issue
+- Alter CLI such that, (when it's been over a day, or when I use `-n`), it lets me choose a thread by typing a number based on a console.log of the threads availablle (slug + description)
 - Post 17x per day in this way.
 
 For waitlist:
@@ -149,18 +157,12 @@ For waitlist:
 
 More CLI
 
-- `xy history [n]` to get the latest thread (or multiple) and read through it as markdown (also seeing all comments)
-- `xy ship ...` to send a tweet but also ship changes to git with the same tweet.
-- `xy snap` to make a screenshot
-- `xy ./path.png ...` to upload photo/video with comment, or turn a text file into a thread, or add a link to a file!
-- Maybe can even do line number annotations and have it make screenshots of these sections. That'd be a killer feature. `xy ./path.ts:10-20 ...`
+- `xy history` to get the latest thread (or multiple) and read through it as markdown (also seeing all comments)
+- `xy ./path.png [message]` to upload photo/video with comment, or turn a text file into a thread, or add a link to a file!
 - `xy yap` to record, transcribe, send
 - `xy find` to find relevant tweets from the cli and show them as numbered threads, allowing easy responding (uses `forgithub.threads`)
-- Features to improve tweets further somehow, e.g. based on relevant files, auto-tagging people, etc.
-- `xy prompt` to allow AI to write/suggest the tweet (in different ways, e.g. based on changes - cc https://tweetgit.com https://x.com/dzhohola)
-- someone like https://x.com/yagiznizipli posts all PRs on X and that also kinda works but X wants X. branch detection is definitely required to determine the thread!
 
 Monetisation
 
-- For free users, add advertisement to second message of a thread.
-- Charge $0.05 per tweet for paid users, pay as you go. someone like me that ships and tweets 50+ times daily, that's $75 per month.
+- Max 5 tweets per day for free users (to be increased to ±20)
+- Charge $0.10 per tweet for paid users, pay as you go. someone like me that ships and tweets 50+ times daily, that's $150 per month.
