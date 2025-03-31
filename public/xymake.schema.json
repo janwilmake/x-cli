@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "community_id": {
+      "type": "string",
+      "description": "ID of a community to post in by default for this repo",
+      "examples": ["1845745544406151438"]
+    },
+
+    "lastPostUrl": {
+      "type": "string",
+      "description": "URL of the last post made from this repo",
+      "format": "uri"
+    },
+
+    "appendix": {
+      "type": "string",
+      "description": "Add this if you wish to remove or alter the default appendix to new threads. Ensure to use {{repoUrl}} in your appendix, as this will be replaced with the URL to your repo or file."
+    },
+
+    "threads": {
+      "description": "Threads that are related to this repo. Will be picked up by the CLI to quote them when a new thread is desired.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slug", "url", "branch"],
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "url-friendly human-readable identifier for this thread. Can be edited to make it easier to choose which thread to quote."
+          },
+
+          "url": {
+            "type": "string",
+            "description": "The URL of a thread to be quoted"
+          },
+
+          "branch": {
+            "type": "string",
+            "description": "About which branch is this thread?"
+          },
+
+          "description": {
+            "type": "string",
+            "description": "Optional: add some more info about this thread if useful"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "ISO timestamp (YYYY-MM-DD HH:mm:ss) of when this post was created"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "ISO timestamp (YYYY-MM-DD HH:mm:ss) of when this post was last commented upon"
+          }
+        }
+      }
+    }
+  }
+}

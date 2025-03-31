@@ -1,10 +1,11 @@
 {
-  "posts": [
+  "threads": [
     {
-      "url": "https://github.com/janwilmake/x-cli/tree/main",
       "branch": "main",
-      "tweetId": "1906208427350585430",
-      "createdAt": "2025-03-30T04:54:35.607Z"
+      "createdAt": "2025-03-31T12:25:26.948Z",
+      "slug": "thread1906684260066427077",
+      "updatedAt": "2025-03-31T12:25:26.949Z",
+      "url": "https://x.com/janwilmake/status/1906683079286022627"
     }
   ]
 }
