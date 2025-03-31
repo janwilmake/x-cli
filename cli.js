@@ -338,8 +338,12 @@ async function sendTweet(content, isNewThread, repoRelativePath) {
       }
     }
 
-    const appendixTemplate = `\n\nPowered by X CLI\n {{repoUrl}}`;
-    const appendixUrl = repoInfo.url + "/" + repoRelativePath;
+    const appendixTemplate =
+      state.appendix || `\n\nPowered by X CLI\n {{repoUrl}}`;
+    const appendixUrl =
+      repoRelativePath === ""
+        ? repoInfo.url
+        : repoInfo.url + "/" + repoRelativePath;
 
     const appendix = shouldPostAppendix
       ? appendixTemplate.replace("{{repoUrl}}", appendixUrl)
