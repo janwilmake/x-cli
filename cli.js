@@ -362,8 +362,12 @@ async function sendTweet(content, isNewThread, repoRelativePath) {
     const encodedContent = encodeURIComponent(content + appendix);
     let url;
 
+    const communityIdPart = state.community_id
+      ? `&community_id=${state.community_id}`
+      : "";
+
     if (action === "new") {
-      url = `${API_BASE_URL}/${config.username}/${action}/${encodedContent}?apiKey=${config.apiKey}&username=${config.username}`;
+      url = `${API_BASE_URL}/${config.username}/${action}/${encodedContent}?apiKey=${config.apiKey}&username=${config.username}${communityIdPart}`;
     } else {
       url = `${API_BASE_URL}/${config.username}/${action}/${tweetId}/${encodedContent}?apiKey=${config.apiKey}&username=${config.username}`;
     }
