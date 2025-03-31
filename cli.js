@@ -284,7 +284,14 @@ function getStateFile() {
 function saveStateFile(state) {
   try {
     const statePath = path.join(process.cwd(), "xymake.json");
-    fs.writeFileSync(statePath, JSON.stringify(state, null, 2));
+    fs.writeFileSync(
+      statePath,
+      JSON.stringify(
+        { ...state, $schema: "https://cli.xymake.com/xymake.schema.json" },
+        null,
+        2,
+      ),
+    );
   } catch (error) {
     console.error("Error saving state file:", error.message);
   }
