@@ -140,6 +140,7 @@ Easy onboarding
 - ✅ create config for adding post to a community on a repo-basis but also a default fallback!
 - ✅ Remove posts property, added threads property, and it picks the latest thread now.
 - ✅ `xy ./path.ts` - Link to a specific file on github
+- ✅ Post 17x per day in this way.
 
 ## BACKLOG
 
@@ -148,7 +149,6 @@ A little more improvements
 - Allow `community_id` param for new posts in xymake api (ignored now)
 - Finish thread array logic after i see the issue
 - Alter CLI such that, (when it's been over a day, or when I use `-n`), it lets me choose a thread by typing a number based on a console.log of the threads availablle (slug + description)
-- Post 17x per day in this way.
 
 For waitlist:
 
