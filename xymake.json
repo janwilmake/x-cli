@@ -2,10 +2,11 @@
   "threads": [
     {
       "branch": "main",
-      "createdAt": "2025-03-31T12:25:26.948Z",
-      "slug": "thread1906684260066427077",
-      "updatedAt": "2025-03-31T12:25:26.949Z",
+      "createdAt": "2025-03-31T12:49:14.055Z",
+      "slug": "thread1906690245640220876",
+      "updatedAt": "2025-03-31T12:49:14.056Z",
       "url": "https://x.com/janwilmake/status/1906683079286022627"
     }
-  ]
+  ],
+  "$schema": "https://cli.xymake.com/xymake.schema.json"
 }

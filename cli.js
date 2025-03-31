@@ -426,6 +426,8 @@ async function sendTweet(content, isNewThread, repoRelativePath) {
       },
     );
 
+    state.lastPostUrl = tweetUrl;
+
     saveStateFile(state);
   } catch (error) {
     console.error(`Error: ${error.message}`);
