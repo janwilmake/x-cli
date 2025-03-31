@@ -135,8 +135,10 @@ For me:
 - ✅ create and host xymake.json schema
 - ✅ Append repo url to first post, not as comment. this seems to have better unfurling support
 - ✅ Allow configuring a custom appendix to your new thread post.
-- Support for referencing files. For now, if the first param after xymake matches a filepath relative from cwd, ensure to get the git root relative, and append https://github.com/owner/repo/blob/branch/...path instead of the regular appendix!
-- create config for adding post to a community on a repo-basis but also a default fallback!
+- ✅ Support for referencing files. For now, if the first param after xymake matches a filepath relative from cwd, ensure to get the git root relative, and append https://github.com/owner/repo/blob/branch/...path instead of the regular appendix!
+- ✅ create config for adding post to a community on a repo-basis but also a default fallback!
+- ✅ Remove posts property, added threads property, and it picks the latest thread now.
+- Finish thread array build logic
 - Alter CLI such that I can add core threads to each repo and it'd allow me to pick one any day to start a quoted post of it. `x -s` would allow to select a thread first, or if it's been >24h, it will allow this. `xymake.json` should become an accumulation of useful threads that can also be altered easily!
 - Post 17x per day in this way.
 

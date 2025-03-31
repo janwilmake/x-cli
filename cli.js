@@ -408,23 +408,32 @@ async function sendTweet(content, isNewThread, repoRelativePath) {
       }\n\n${tweetUrl}`,
     );
 
+    // TODO: This is not entirely done yet!!!
+
     const threadsWithoutThis =
-      state.threads?.filter(
-        (post) =>
-          !(post.url === latestPost?.url && post.branch === repoInfo.branch),
-      ) || [];
+      action === "new"
+        ? state.threads || []
+        : state.threads?.filter(
+            (post) =>
+              !(
+                // TODO: NB: This is not correct!
+                (
+                  post.url === latestPost?.url &&
+                  post.branch === repoInfo.branch
+                )
+              ),
+          ) || [];
     // Update state
+
     state.threads = threadsWithoutThis;
 
-    state.threads.push(
-      alreadyThread || {
-        branch: repoInfo.branch,
-        createdAt: new Date(Date.now()).toISOString(),
-        slug: `thread${json.tweet_id}`,
-        updatedAt: new Date(Date.now()).toISOString(),
-        url: threadUrl,
-      },
-    );
+    state.threads.push({
+      branch: repoInfo.branch,
+      createdAt: new Date(Date.now()).toISOString(),
+      slug: `thread${json.tweet_id}`,
+      updatedAt: new Date(Date.now()).toISOString(),
+      url: threadUrl,
+    });
 
     state.lastPostUrl = tweetUrl;
 
