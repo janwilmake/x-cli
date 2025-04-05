@@ -25,7 +25,27 @@
       "description": "Add this if you wish to remove or alter the default appendix to new threads. Ensure to use {{repoUrl}} in your appendix, as this will be replaced with the URL to your repo or file."
     },
 
+    "posts": {
+      "description": "Posts that are important to this repo. Will be picked up by the CLI to quote them when a new thread is desired. Will replace 'threads' property as a more succinct replacment.",
+      "properties": {},
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["url"],
+        "properties": {
+          "url": { "type": "string" },
+          "branch": {
+            "type": "string",
+            "examples": ["main"],
+            "description": "Defaults to default branch"
+          }
+        }
+      }
+    },
+
     "threads": {
+      "deprecated": true,
       "description": "Threads that are related to this repo. Will be picked up by the CLI to quote them when a new thread is desired.",
       "type": "array",
       "items": {
