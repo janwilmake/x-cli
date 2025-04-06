@@ -1,13 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
   "type": "object",
-  "required": ["$schema", "threads"],
+  "required": ["$schema", "posts"],
   "additionalProperties": false,
   "properties": {
     "$schema": {
       "type": "string",
       "description": "links to https://cli.xymake.com/xymake.schema.json"
     },
+
     "community_id": {
       "type": "string",
       "description": "ID of a community to post in by default for this repo",
