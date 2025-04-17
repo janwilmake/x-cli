@@ -12,6 +12,7 @@
  * @typedef {Object} GlobalConfig
  * @property {string} username - username of your X
  * @property {string} apiKey - API Key found after login
+ * @property {boolean} [useDoubleStruck] - Whether to convert tweet text to double-struck characters
  */
 
 /**
@@ -35,6 +36,7 @@ const CONFIG_FILE = path.join(
   ".xymake-config.json",
 );
 const API_BASE_URL = "https://xymake.com";
+const DOUBLE_STRUCK_API_URL = "https://abc.xymake.com";
 const CLI_AUTH_URL = `https://xymake.com/login?scope=${encodeURIComponent(
   "users.read follows.read tweet.read offline.access tweet.write",
 )}&redirect_uri=https://cli.xymake.com/console`;
@@ -171,12 +173,19 @@ async function setupConfig() {
   // Get username from user input
   const username = await prompt("Enter your X username (without @): ");
 
+  // Ask about double-struck text preference
+  const useDoubleStruckInput = await prompt(
+    "Do you want to use double-struck text for tweets? (yes/no): ",
+  );
+  const useDoubleStruck = useDoubleStruckInput.toLowerCase() === "yes";
+
   // Save configuration
-  const config = { apiKey, username };
+  const config = { apiKey, username, useDoubleStruck };
   fs.writeFileSync(CONFIG_FILE, JSON.stringify(config, null, 2));
 
   console.log("Setup complete! You can now use the xy command to post tweets.");
 }
+
 /**
  *
  * @returns {GlobalConfig|null}
@@ -298,6 +307,44 @@ function saveStateFile(state) {
 }
 
 /**
+ * Convert regular text to double-struck text using the API
+ * @param {string} text - The text to convert
+ * @returns {Promise<string>} - The converted double-struck text
+ */
+async function convertToDoubleStruck(text) {
+  try {
+    const encodedText = encodeURIComponent(text);
+    const url = `${DOUBLE_STRUCK_API_URL}/${encodedText}`;
+
+    const response = await fetch(url, {
+      headers: {
+        accept: "text/markdown",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`API responded with status ${response.status}`);
+    }
+
+    const markdown = await response.text();
+
+    // Parse the converted text from the markdown response
+    // Expected format: "# Double-Struck Conversion\n\n**Original**: original_text\n\n**Converted**: converted_text"
+    const convertedTextMatch = markdown.match(/\*\*Converted\*\*: (.+?)$/m);
+
+    if (!convertedTextMatch || !convertedTextMatch[1]) {
+      throw new Error("Could not parse converted text from API response");
+    }
+
+    return convertedTextMatch[1].trim();
+  } catch (error) {
+    console.error(`Error converting to double-struck: ${error.message}`);
+    // Return original text if conversion fails
+    return text;
+  }
+}
+
+/**
  * @param {string} content - content of the tweet
  * @param {boolean} isNewThread - if this is forced by cli to become a new thread
  * @param {string} repoRelativePath - relative path of a file in the repo, will be appended to content, or as repoUrl in appendix if new thread is started.
@@ -345,8 +392,7 @@ async function sendTweet(content, isNewThread, repoRelativePath) {
       }
     }
 
-    const appendixTemplate =
-      state.appendix || `\n\nPowered by X CLI\n {{repoUrl}}`;
+    const appendixTemplate = state.appendix || `\n\n{{repoUrl}}`;
     const appendixUrl =
       repoRelativePath === ""
         ? repoInfo.url
@@ -358,8 +404,18 @@ async function sendTweet(content, isNewThread, repoRelativePath) {
       ? appendixUrl
       : "";
 
+    // Convert text to double-struck if enabled
+    let tweetContent = content;
+    if (config.useDoubleStruck) {
+      console.log("Converting text to double-struck format...");
+      tweetContent = await convertToDoubleStruck(content);
+    }
+
+    // Prepare the final tweet content with appendix
+    const finalContent = tweetContent + appendix;
+
     // Send the tweet
-    const encodedContent = encodeURIComponent(content + appendix);
+    const encodedContent = encodeURIComponent(finalContent);
     let url;
 
     const communityIdPart = state.community_id
@@ -405,6 +461,8 @@ async function sendTweet(content, isNewThread, repoRelativePath) {
           : action === "quote"
           ? "Quoted previous thread."
           : "Replied to existing thread."
+      }${
+        config.useDoubleStruck ? " (With double-struck text)" : ""
       }\n\n${tweetUrl}`,
     );
 

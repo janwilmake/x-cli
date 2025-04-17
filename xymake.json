@@ -2,13 +2,13 @@
   "threads": [
     {
       "branch": "main",
-      "createdAt": "2025-03-31T13:06:02.394Z",
-      "slug": "thread1906694475155427350",
-      "updatedAt": "2025-03-31T13:06:02.394Z",
+      "createdAt": "2025-04-17T11:55:16.718Z",
+      "slug": "thread1912837258878525581",
+      "updatedAt": "2025-04-17T11:55:16.719Z",
       "url": "https://x.com/janwilmake/status/1906683079286022627"
     }
   ],
   "community_id": "1845745544406151438",
   "$schema": "https://cli.xymake.com/xymake.schema.json",
-  "lastPostUrl": "https://x.com/janwilmake/status/1906694475155427350"
+  "lastPostUrl": "https://x.com/janwilmake/status/1912837258878525581"
 }
