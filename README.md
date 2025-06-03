@@ -166,3 +166,7 @@ Monetisation
 
 - Max 5 tweets per day for free users (to be increased to ±20)
 - Charge $0.10 per tweet for paid users, pay as you go. someone like me that ships and tweets 50+ times daily, that's $150 per month.
+
+# MVP Tweets
+
+https://x.com/chintanpuggalok/status/1929421128067354833
